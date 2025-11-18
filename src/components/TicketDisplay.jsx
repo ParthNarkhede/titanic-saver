@@ -40,11 +40,13 @@ import { X } from "lucide-react";
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import qr from '../assets/qr.png';
 
 const TicketDisplay = ({ ticketData, onReset }) => {
     const [timeLeft, setTimeLeft] = useState(3300); // 2 hours countdown
     const [activeTicket, setActiveTicket] = useState(ticketData);
     const [loading, setLoading] = useState(!ticketData);
+    const [showQr, setShowQr] = useState(false);
     const navigate = useNavigate();
 
     // Fetch active ticket from Firebase if not provided
@@ -225,7 +227,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                         </div>
 
                         {/* Arrow */}
-                        <div className="text-4xl px-1">→</div>
+                        <div className="pb-2 text-4xl px-1">→</div>
 
                         {/* Destination */}
                         <div className="flex-1 text-center pl-1">
@@ -252,7 +254,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                     <div className="absolute -right-4 top-42 w-8 h-8 bg-pink-200 rounded-full "></div>
 
                     {/* Dotted line between circular cuts */}
-                    <div className="absolute top-46 left-4 right-4 w-75 border-t border-dotted border-gray-400"></div>
+                    <div className="absolute top-46 left-4 right-4 w-80 border-t border-dashed border-gray-400"></div>
 
 
 
@@ -275,7 +277,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                         {generateTicketNumber()}
                     </div>
 
-                    <div className=" border-gray-400 border-t border-dotted my-2"></div>
+                    <div className=" border-gray-400 border-t border-dashed my-2"></div>
                     {/* <div className="absolute top-49 left-0 w-100 border-t border-dotted border-gray-400"></div> */}
 
 
@@ -286,7 +288,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                                 src={logo}
                                 alt="PMPML Logo"
                                 className="w-600 h-600 object-contain"
-                                animate={{ scale: [1, 1.2, 1] }} // pump in & out
+                                animate={{ scale: [0.6, 1.3, 0.6] }} // pump in & out
                                 transition={{
                                     duration: 2, // 2 seconds for full cycle
                                     repeat: Infinity,
@@ -307,12 +309,43 @@ const TicketDisplay = ({ ticketData, onReset }) => {
 
             </div>
             <button
-                onClick={onReset}
+                onClick={() => setShowQr(true)}
                 className="mt-6 w-full max-w-sm mx-auto flex items-center justify-center gap-2 bg-green-100 text-green-700 border border-green-500 py-2 px-4 rounded-lg hover:bg-green-200 transition duration-200 font-medium"
             >
                 <QrCode className="w-5 h-5" />
                 Show QR Code
             </button>
+
+            {/* QR Modal */}
+            {showQr && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+                    role="dialog"
+                    aria-modal="true"
+                    onClick={() => setShowQr(false)}
+                >
+                    <div
+                        className="bg-white w-70 h-70 rounded-lg shadow-lg p-4 relative flex items-center justify-center"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            onClick={() => setShowQr(false)}
+                            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+                            aria-label="Close QR"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <div className="flex flex-col items-center gap-3">
+                            <img
+                                src={qr}
+                                alt="Ticket QR Code"
+                                className="w-56 h-56 object-contain bg-white"
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
