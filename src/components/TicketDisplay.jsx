@@ -168,7 +168,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
             <div className="flex justify-between mt-1 bg-transparent max-w-sm mx-auto px-4 pt-3 pb-2">
 
                 <button
-                    className="appearance-none bg-pink-200 text-gray-700 absolute top-2 left-3"
+                    className="appearance-none bg-yellow-300 text-gray-700 absolute top-2 left-3"
                     onClick={onReset}
                 >
                     <X size={22} strokeWidth={2.5} />
@@ -250,8 +250,8 @@ const TicketDisplay = ({ ticketData, onReset }) => {
 
 
                     {/* Top circular cuts */}
-                    <div className="absolute -left-4 top-42 w-8 h-8 inset z-20 bg-pink-200 rounded-full"></div>
-                    <div className="absolute -right-4 top-42 w-8 h-8 inset z-20 bg-pink-200 rounded-full "></div>
+                    <div className="absolute -left-4 top-42 w-8 h-8 inset z-20 bg-yellow-300 rounded-full"></div>
+                    <div className="absolute -right-4 top-42 w-8 h-8 inset z-20 bg-yellow-300 rounded-full "></div>
 
                     {/* Dotted line between circular cuts */}
                     <div className="absolute inset z-10 top-46 left-4 right-4 w-80 border-t border-dashed border-gray-400"></div>
@@ -273,7 +273,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                     </div>
 
                     {/* Ticket number */}
-                    <div className="text-center font-mono tracking-wide text-sm mb-6">
+                    <div className="text-center font-mono tracking-wide text-sm mb-5">
                         {generateTicketNumber()}
                     </div>
 
@@ -282,13 +282,13 @@ const TicketDisplay = ({ ticketData, onReset }) => {
 
 
                     {/* PMPML Watermark */}
-                    <div className="flex justify-center mb-0 mt-0">
+                    <div className="flex justify-center mb-0 mt-2">
                         <div className="w-70 h-50 flex items-center justify-center rounded-full ">
                             <motion.img
                                 src={logo}
                                 alt="PMPML Logo"
                                 className="w-600 h-600 object-contain"
-                                animate={{ scale: [0.6, 1.3, 0.6] }} // pump in & out
+                                animate={{ scale: [0.5, 1.3, 0.5] }} // pump in & out
                                 transition={{
                                     duration: 2, // 2 seconds for full cycle
                                     repeat: Infinity,

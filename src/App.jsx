@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<BusApp />} />
         <Route path="/ticket-form" element={<TicketForm />} />
-        <Route path="/view-ticket" element={<div className="min-h-screen bg-pink-200 flex items-center justify-center">
+        <Route path="/view-ticket" element={<div className="min-h-screen bg-yellow-300 flex items-center justify-center">
           <div className="container mx-auto px-4 min-w-screen">
             <TicketDisplay onReset={handleReset} />
           </div>
