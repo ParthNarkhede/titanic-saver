@@ -34,7 +34,7 @@
 //     <div className="bg-white min-h-screen font-sans text-black px-4 pt-2">
 //       {/* Header */}
 //       <div className="flex items-center justify-between mt-2 px-1">
-        
+
 //         <img
 //             src={pmpmllog}
 //             alt="PMPL Logo"
@@ -82,7 +82,7 @@
 //           </div>
 //           <span className="text-sm font-medium">Bus Ticket</span>
 //         </button>
-        
+
 
 //         <button className="bg-blue-100 rounded-xl w-28 h-16 flex flex-col items-center justify-center space-y-1">
 //           <div className="bg-black text-white rounded-md w-8 h-8 flex items-center justify-center">
@@ -216,22 +216,22 @@ import profile from "../assets/profi.png";
 
 const PmpmlLogo = () => (
   <svg className="w-12 h-12" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="45" fill="#E8F4F8" stroke="#333" strokeWidth="2"/>
+    <circle cx="50" cy="50" r="45" fill="#E8F4F8" stroke="#333" strokeWidth="2" />
     <text x="50" y="58" fontSize="24" fontWeight="bold" textAnchor="middle" fill="#333">PM</text>
   </svg>
 );
 
 const BusStopIcon = () => (
   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="10" fill="white" stroke="currentColor" strokeWidth="2"/>
-    <path d="M8 8h8v8H8z" fill="currentColor"/>
+    <circle cx="12" cy="12" r="10" fill="white" stroke="currentColor" strokeWidth="2" />
+    <path d="M8 8h8v8H8z" fill="currentColor" />
   </svg>
 );
 
 const TicketIconCustom = () => (
   <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#FFD700">
-    <rect x="4" y="8" width="16" height="8" rx="1" fill="#FFD700"/>
-    <line x1="4" y1="12" x2="20" y2="12" stroke="#333" strokeWidth="0.5" strokeDasharray="1,1"/>
+    <rect x="4" y="8" width="16" height="8" rx="1" fill="#FFD700" />
+    <line x1="4" y1="12" x2="20" y2="12" stroke="#333" strokeWidth="0.5" strokeDasharray="1,1" />
   </svg>
 );
 
@@ -251,24 +251,24 @@ export default function App() {
       {/* Header */}
       <div className="flex items-center justify-between pr-4 py-1 bg-white border border-gray-200">
         <img
-            src={pmpmllog}
-            alt="PMPL Logo"
-            className="w-25 "
-          />
+          src={pmpmllog}
+          alt="PMPL Logo"
+          className="w-25 "
+        />
         <div className="flex gap-4">
           <button aria-label="Notifications" className="focus:outline-none">
             <img
-            src={bell}
-            alt="PMPL Logo"
-            className="w-5 "
-          />
+              src={bell}
+              alt="PMPL Logo"
+              className="w-5 "
+            />
           </button>
           <button aria-label="User Profile" className="focus:outline-none">
             <img
-            src={profile}
-            alt="PMPL Logo"
-            className="w-7 bg-white "
-          />
+              src={profile}
+              alt="PMPL Logo"
+              className="w-7 bg-white "
+            />
           </button>
         </div>
       </div>
@@ -291,11 +291,11 @@ export default function App() {
               />
             </svg>
           </span>
-         <input
-          type="text"
-          placeholder="कुठे जायचं आहे?"
-          className="w-full rounded-full text-black placeholder-gray-900 text-sm  bg-gray-200 py-3 pl-11 pr-2  text-sm focus:outline-none"
-        />
+          <input
+            type="text"
+            placeholder="कुठे जायचं आहे?"
+            className="w-full rounded-full text-black placeholder-gray-900 text-sm  bg-gray-200 py-3 pl-11 pr-2 focus:outline-none"
+          />
 
         </div>
       </div>
@@ -306,10 +306,10 @@ export default function App() {
           <button className="bg-blue-100 rounded-lg w-38 h-16 flex items-center justify-center shadow-sm">
             <div className=" rounded-lg  flex items-center justify-center">
               <img
-            src={bustick}
-            alt="bus Logo"
-            className="w-7 h-6 "
-          />
+                src={bustick}
+                alt="bus Logo"
+                className="w-7 h-6 "
+              />
             </div>
           </button>
           <span className="text-sm font-medium text-black">Bus Ticket</span>
@@ -320,10 +320,10 @@ export default function App() {
             <div className="rounded-lg flex items-center justify-center">
               {/* <IdentificationIcon className="w-6 h-6 text-white" /> */}
               <img
-            src={pass}
-            alt="bus Logo"
-            className="w-8 h-6 "
-          />
+                src={pass}
+                alt="bus Logo"
+                className="w-8 h-6 "
+              />
             </div>
           </button>
           <span className="text-sm font-medium text-black">Daily Pass</span>
@@ -335,10 +335,10 @@ export default function App() {
         <div className="flex flex-col items-center gap-1">
           <button className="bg-blue-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-sm">
             <img
-            src={TicketImg}
-            alt="bus Logo"
-            className="w-7 h-7 "
-          />
+              src={TicketImg}
+              alt="bus Logo"
+              className="w-7 h-7 "
+            />
           </button>
           <span className="text-sm font-medium  text-black text-center leading-tight">View Ticket</span>
         </div>
@@ -346,10 +346,10 @@ export default function App() {
         <div className="flex flex-col items-center gap-1">
           <button className="bg-blue-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-sm">
             <img
-            src={TicketImg}
-            alt="bus Logo"
-            className="w-7 h-7 "
-          />
+              src={TicketImg}
+              alt="bus Logo"
+              className="w-7 h-7 "
+            />
           </button>
           <span className="text-sm font-medium text-black text-center leading-tight">View Pass</span>
           {/* <span className="text-sm font-medium text-black text-center leading-tight"> Pass</span> */}
@@ -358,10 +358,10 @@ export default function App() {
         <div className="flex flex-col items-center gap-1">
           <button className="bg-blue-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-sm">
             <img
-            src={route}
-            alt="bus Logo"
-            className="w-7 h-7 "
-          />
+              src={route}
+              alt="bus Logo"
+              className="w-7 h-7 "
+            />
           </button>
           <span className="text-sm font-medium text-black text-center leading-tight">Route Timetable</span>
         </div>
@@ -370,10 +370,10 @@ export default function App() {
           <button className="bg-blue-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-sm">
             <div className=" rounded-lg overflow-hidden">
               <img
-            src={MetroImg}
-            alt="bus Logo"
-            className="w-15 h-15 bg-blue-100 object-cover "
-          />
+                src={MetroImg}
+                alt="bus Logo"
+                className="w-15 h-15 bg-blue-100 object-cover "
+              />
             </div>
           </button>
           <span className="text-sm font-medium text-black text-center leading-tight">Metro Ticket</span>
@@ -394,26 +394,26 @@ export default function App() {
           <div className="flex items-center px-3 py-3 gap-3">
             <div className=" rounded-full p-2">
               <img
-            src={bus}
-            alt="bus Logo"
-            className="w-5 h-5 "
-          />
+                src={bus}
+                alt="bus Logo"
+                className="w-5 h-5 "
+              />
             </div>
             <span className="flex-1 text-sm font-medium text-black">
               Wakefield IT Company Bus Stop
             </span>
             <span className="text-sm font-medium text-black">88 m</span>
             <img
-            src={right}
-            alt="bus Logo"
-            className=" bg-white w-4 h-4 "
-          />
+              src={right}
+              alt="bus Logo"
+              className=" bg-white w-4 h-4 "
+            />
           </div>
-          
+
           <div className="bg-white text-center py-1 border-t border-b border-gray-300">
             <p className="text-xs text-gray-700">No upcoming buses at this stop.</p>
           </div>
-          
+
           <button className="w-full py-1 text-center text-sm font-medium text-black">
             See More Buses
           </button>
