@@ -59,7 +59,7 @@ const TicketForm = ({ onSubmit }) => {
                 status: 'active'
             });
 
-            setSuccess(`✓ Ticket saved successfully! ID: ${docRef.id}`);
+            setSuccess(`✓ Payment Done!\nTicket saved successfully! ID: ${docRef.id}`);
 
             // Reset form
             setFormData({
@@ -86,9 +86,9 @@ const TicketForm = ({ onSubmit }) => {
     };
 
     return (
-        <div className="min-h-screen bg-white flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gray-200 flex items-center justify-center p-4">
             <div className="bg-white rounded-lg shadow-md p-8 max-w-md w-full">
-                <h2 className="text-2xl font-bold mb-6 text-center text-blue-800">Bus Ticket Booking</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center text-green-400">PMPML Ticket Booking</h2>
 
                 {error && (
                     <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm">
@@ -110,7 +110,7 @@ const TicketForm = ({ onSubmit }) => {
                             name="route"
                             value={formData.route}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
                             placeholder="e.g., 228"
                             required
                         />
@@ -123,7 +123,7 @@ const TicketForm = ({ onSubmit }) => {
                             name="originating"
                             value={formData.originating}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
                             placeholder="e.g., Sushind Phata"
                             required
                         />
@@ -136,7 +136,7 @@ const TicketForm = ({ onSubmit }) => {
                             name="destination"
                             value={formData.destination}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
                             placeholder="e.g., Katraj"
                             required
                         />
@@ -150,7 +150,7 @@ const TicketForm = ({ onSubmit }) => {
                             value={formData.ticketsCount}
                             onChange={handleChange}
                             min="1"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                             placeholder="e.g., 3"
                             required
                         />
@@ -165,7 +165,7 @@ const TicketForm = ({ onSubmit }) => {
                             onChange={handleChange}
                             min="1"
                             step="0.01"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                             placeholder="e.g., 50.00"
                             required
                         />
@@ -174,9 +174,9 @@ const TicketForm = ({ onSubmit }) => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`w-full ${loading ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'} text-white py-2 px-4 rounded-md transition duration-200 font-medium`}
+                        className={` w-full ${loading ? 'bg-green-400' : 'bg-green-600 hover:bg-green-700'} text-white mt-2 py-2 px-4 rounded-md transition duration-200 font-medium`}
                     >
-                        {loading ? 'Saving...' : 'Generate Ticket'}
+                        {loading ? 'Saving...' : 'Pay'}
                     </button>
                 </form>
             </div>

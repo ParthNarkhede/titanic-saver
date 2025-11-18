@@ -102,7 +102,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
     };
 
     const now = new Date();
-    const validUntil = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+    const validUntil = new Date(now.getTime() + 1 * 60 * 60 * 1000);
 
     const formatDate = (date) => {
         const day = date.getDate();
@@ -165,7 +165,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
     return (
         <>
             {/* Header Bar with buttons */}
-            <div className="flex justify-between items-center bg-transparent max-w-sm mx-auto px-4 pt-3 pb-2">
+            <div className="flex justify-between mt-1 bg-transparent max-w-sm mx-auto px-4 pt-3 pb-2">
 
                 <button
                     className="appearance-none bg-pink-200 text-gray-700 absolute top-2 left-3"
@@ -200,17 +200,17 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                         {/* Left: Route */}
                         <div>
                             <div className="text-sm text-left text-gray-400">Route</div>
-                            <div className="text-lg text-center font-bold">{activeTicket.route}</div>
+                            <div className="text-lg text-center font-semibold">{activeTicket.route}</div>
                         </div>
                         {/* Right: Tickets + Fare */}
                         <div className="flex gap-6 text-center">
                             <div>
                                 <div className="text-sm text-right text-gray-400">Tickets count</div>
-                                <div className="text-base font-bold">{activeTicket.ticketsCount}</div>
+                                <div className="text-lg font-semibold">{activeTicket.ticketsCount}</div>
                             </div>
                             <div>
                                 <div className="text-sm text-right text-gray-400">Fare</div>
-                                <div className="text-base font-bold">₹{activeTicket.fare}</div>
+                                <div className="text-lg font-semibold">₹{activeTicket.fare}</div>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                     <div className="flex items-center justify-center mb-14 px-2">
                         {/* Origin */}
                         <div className="flex-1 text-center pr-1">
-                            <span className="text-medium block break-words whitespace-normal overflow-hidden line-clamp-2">
+                            <span className="text-lg  block break-words whitespace-normal overflow-hidden line-clamp-2">
                                 {activeTicket.originating}
                             </span>
                         </div>
@@ -233,7 +233,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                         <div className="flex-1 text-center pl-1">
                             <span
                                 className="
-                                    text-medium 
+                                    text-lg 
                                     break-words 
                                     whitespace-normal 
                                     overflow-hidden 
@@ -264,20 +264,20 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                     <div className="mt-7 flex justify-between mb-4 text-xs">
                         <div>
                             <div className=" text-gray-400 ">Booking Time</div>
-                            <div className="font-bold">{formatDate(now)}</div>
+                            <div className="font-semibold">{formatDate(now)}</div>
                         </div>
                         <div className="text-left">
                             <div className=" text-gray-400">Validity Time</div>
-                            <div className="font-bold">{formatDate(validUntil)}</div>
+                            <div className="font-semibold">{formatDate(validUntil)}</div>
                         </div>
                     </div>
 
                     {/* Ticket number */}
-                    <div className="text-center tracking-wide text-sm mb-6">
+                    <div className="text-center font-mono tracking-wide text-sm mb-6">
                         {generateTicketNumber()}
                     </div>
 
-                    <div className=" border-gray-400 border-t border-dashed my-2"></div>
+                    <div className=" border-gray-400 border-t border-dashed my-1"></div>
                     {/* <div className="absolute top-49 left-0 w-100 border-t border-dotted border-gray-400"></div> */}
 
 
