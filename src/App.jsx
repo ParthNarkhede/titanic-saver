@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import TicketForm from './components/TicketForm';
 import TicketDisplay from './components/TicketDisplay';
 import BusApp from './components/BusApp';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [ticketData, setTicketData] = useState(null);
@@ -16,18 +17,17 @@ function App() {
   };
 
   return (
-    // <div className="min-h-screen bg-pink-200  flex items-center justify-center">
-    //   <div className="container mx-auto px-4 min-w-screen">
-    //     {!ticketData ? (
-    //       <TicketForm onSubmit={handleFormSubmit} />
-    //     ) : (
-    //       <TicketDisplay ticketData={ticketData} onReset={handleReset} />
-    //     )}
-    //   </div>
-    // </div>
-    <div className="min-h-screen bg-white">
-      <BusApp />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<BusApp />} />
+        <Route path="/ticket-form" element={<TicketForm />} />
+        <Route path="/view-ticket" element={<div className="min-h-screen bg-pink-200 flex items-center justify-center">
+          <div className="container mx-auto px-4 min-w-screen">
+            <TicketDisplay onReset={handleReset} />
+          </div>
+        </div>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

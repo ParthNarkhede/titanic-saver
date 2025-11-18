@@ -13,10 +13,12 @@
     "@heroicons/react": "^1.0.6",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.1.12",
+    "firebase": "^11.10.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

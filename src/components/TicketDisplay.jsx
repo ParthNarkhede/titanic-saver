@@ -1,12 +1,88 @@
+// // src/App.jsx or src/pages/TicketPage.jsx
+// import React, { useState } from "react";
+// import TicketForm from "./components/TicketForm";
+// import TicketDisplay from "./components/TicketDisplay";
+
+// const App = () => {
+//     const [ticketData, setTicketData] = useState(null);
+
+//     const handleFormSubmit = (data) => {
+//         setTicketData(data);
+//     };
+
+//     const handleReset = () => {
+//         setTicketData(null);
+//     };
+
+//     return (
+//         <div className="min-h-screen bg-pink-200 flex items-center justify-center">
+//             <div className="container mx-auto px-4 min-w-screen">
+//                 {!ticketData ? (
+//                     <TicketForm onSubmit={handleFormSubmit} />
+//                 ) : (
+//                     <TicketDisplay ticketData={ticketData} onReset={handleReset} />
+//                 )}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default App;
+
+// ============================================================================
 // src/components/TicketDisplay.jsx
+// ============================================================================
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import logo from "../assets/pmpml.png";
 import { QrCode } from "lucide-react";
 import { X } from "lucide-react";
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const TicketDisplay = ({ ticketData, onReset }) => {
     const [timeLeft, setTimeLeft] = useState(3300); // 2 hours countdown
+    const [activeTicket, setActiveTicket] = useState(ticketData);
+    const [loading, setLoading] = useState(!ticketData);
+    const navigate = useNavigate();
+
+    // Fetch active ticket from Firebase if not provided
+    useEffect(() => {
+        if (!ticketData) {
+            const fetchActiveTicket = async () => {
+                try {
+                    const ticketsQuery = query(
+                        collection(db, 'tickets'),
+                        where('status', '==', 'active')
+                    );
+                    const querySnapshot = await getDocs(ticketsQuery);
+
+                    if (!querySnapshot.empty) {
+                        const doc = querySnapshot.docs[0];
+                        setActiveTicket({
+                            route: doc.data().route,
+                            originating: doc.data().originating,
+                            destination: doc.data().destination,
+                            ticketsCount: doc.data().ticketsCount,
+                            fare: doc.data().fare
+                        });
+                    } else {
+                        // No active ticket found
+                        setActiveTicket(null);
+                    }
+                } catch (error) {
+                    console.error('Error fetching active ticket:', error);
+                    setActiveTicket(null);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            fetchActiveTicket();
+        } else {
+            setLoading(false);
+        }
+    }, [ticketData]);
 
     useEffect(() => {
         if (timeLeft <= 0) return;
@@ -58,6 +134,32 @@ const TicketDisplay = ({ ticketData, onReset }) => {
         return '2508231654I049BE'; // fixed for demo
     };
 
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <p className="text-lg font-semibold text-gray-700">Loading ticket...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (!loading && !activeTicket) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <p className="text-lg font-semibold text-gray-700 mb-4">No active ticket found</p>
+                    <button
+                        onClick={() => navigate('/')}
+                        className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                    >
+                        Go Back to Home
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <>
             {/* Header Bar with buttons */}
@@ -96,17 +198,17 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                         {/* Left: Route */}
                         <div>
                             <div className="text-sm text-left text-gray-400">Route</div>
-                            <div className="text-lg text-center font-bold">{ticketData.route}</div>
+                            <div className="text-lg text-center font-bold">{activeTicket.route}</div>
                         </div>
                         {/* Right: Tickets + Fare */}
                         <div className="flex gap-6 text-center">
                             <div>
                                 <div className="text-sm text-right text-gray-400">Tickets count</div>
-                                <div className="text-base font-bold">{ticketData.ticketsCount}</div>
+                                <div className="text-base font-bold">{activeTicket.ticketsCount}</div>
                             </div>
                             <div>
                                 <div className="text-sm text-right text-gray-400">Fare</div>
-                                <div className="text-base font-bold">₹{ticketData.fare}</div>
+                                <div className="text-base font-bold">₹{activeTicket.fare}</div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +220,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                         {/* Origin */}
                         <div className="flex-1 text-center pr-1">
                             <span className="text-medium block break-words whitespace-normal overflow-hidden line-clamp-2">
-                                {ticketData.originating}
+                                {activeTicket.originating}
                             </span>
                         </div>
 
@@ -137,7 +239,7 @@ const TicketDisplay = ({ ticketData, onReset }) => {
                                     leading-snug 
                                     tracking-tight
                                     ">
-                                {ticketData.destination}
+                                {activeTicket.destination}
                             </span>
                         </div>
 
@@ -216,4 +318,3 @@ const TicketDisplay = ({ ticketData, onReset }) => {
 };
 
 export default TicketDisplay;
-
