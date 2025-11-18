@@ -250,11 +250,11 @@ const TicketDisplay = ({ ticketData, onReset }) => {
 
 
                     {/* Top circular cuts */}
-                    <div className="absolute -left-4 top-42 w-8 h-8 bg-pink-200 rounded-full"></div>
-                    <div className="absolute -right-4 top-42 w-8 h-8 bg-pink-200 rounded-full "></div>
+                    <div className="absolute -left-4 top-42 w-8 h-8 inset z-20 bg-pink-200 rounded-full"></div>
+                    <div className="absolute -right-4 top-42 w-8 h-8 inset z-20 bg-pink-200 rounded-full "></div>
 
                     {/* Dotted line between circular cuts */}
-                    <div className="absolute top-46 left-4 right-4 w-80 border-t border-dashed border-gray-400"></div>
+                    <div className="absolute inset z-10 top-46 left-4 right-4 w-80 border-t border-dashed border-gray-400"></div>
 
 
 
